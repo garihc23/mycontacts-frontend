@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ContactList = ({ contacts }) => {
+const ContactList = ({ contacts, handleUpdate, handleDelete }) => {
     return (
         <div className="contact-list">
             <h2>Contact List</h2>
@@ -8,6 +8,8 @@ const ContactList = ({ contacts }) => {
                 {contacts.map(contact => (
                     <li key={contact._id}>
                         <strong>{contact.name}</strong> - {contact.email} - {contact.phone}
+                        <button onClick={() => handleUpdate(contact)}>Edit</button>
+                        <button onClick={() => handleDelete(contact._id)}>Delete</button>
                     </li>
                 ))}
             </ul>

@@ -34,13 +34,54 @@ const ContactListPage = (props) => {
     fetchContacts();
   }, []);
 
-
+ /*  const handleUpdate = async (contact) => {
+    try {
+      const response = await fetch(`http://localhost:5001/api/contacts/${contact._id}`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${props.accessToken}`,
+        },
+        body: JSON.stringify(updatedData), // Send the updated contact information here
+      });
+  
+      if (response.ok) {
+        const updatedContact = await response.json();
+        console.log('Contact updated:', updatedContact);
+      } else {
+        console.error('Error updating contact:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error updating contact:', error);
+    }
+  }
+   */
+  const handleDelete = async (contactId) => {
+    try {
+      const response = await fetch(`http://localhost:5001/api/contacts/${contactId}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${props.accessToken}`,
+        },
+      });
+  
+      if (response.ok) {
+        console.log('Contact deleted successfully');
+        // Add logic to remove the contact from the state or re-fetch the contact list
+      } else {
+        console.error('Error deleting contact:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error deleting contact:', error);
+    }
+  }
+  
   console.log("CONTACTS---", contacts)
 
   return (
     <div>
       {/* <Header /> */}
-      <ContactList contacts={contacts} />
+      <ContactList contacts={contacts} /* handleUpdate={handleUpdate}  */handleDelete={handleDelete} />
     </div>
   );
 }
