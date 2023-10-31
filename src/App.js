@@ -67,7 +67,7 @@ function App() {
         />
         <Route
           path="/add-contact"
-          element={<ContactFormPage />}
+          element={<ContactFormPage accessToken={accessToken} />}
         />
         <Route
           path="/register"

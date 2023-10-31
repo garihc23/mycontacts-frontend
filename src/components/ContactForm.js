@@ -1,98 +1,88 @@
 import React, { useState } from 'react';
 
-const ContactForm = ({ addContact }) => {
-    const [formData, setFormData] = useState({
-        name: '',
-        email: '',
-        phone: ''
-    });
+const ContactForm = ({ addContact, accessToken }) => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: ''
+  });
 
-    const handleChange = (e) => {
-        setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
 
-    /*   const handleSubmit = (e) => {
-        e.preventDefault();
-        addContact(formData);
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch('http://localhost:5001/api/contacts', {
+        method: 'POST',
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+      console.log(formData)
+
+      if (response.ok) {
+        const data = await response.json();
+        console.log('Contact added:', data);
+        addContact(data); // Add contact to the list (optional)
         setFormData({
           name: '',
           email: '',
           phone: ''
         });
-      } */
-
-    const handleSubmit = async (e) => {
-        e.preventDefault();
-
-        try {
-            const response = await fetch('http://localhost:5001/api/contacts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(formData),
-            });
-
-            if (response.ok) {
-                const data = await response.json();
-                console.log('Contact added:', data);
-                addContact(data); // Add contact to the list (optional)
-                setFormData({
-                    name: '',
-                    email: '',
-                    phone: ''
-                });
-            } else {
-                console.error('Error adding contact:', response.statusText);
-            }
-        } catch (error) {
-            console.error('Error adding contact:', error);
-        }
+      } else {
+        console.error('Error adding contact:', response.statusText);
+      }
+    } catch (error) {
+      console.error('Error adding contact:', error);
     }
+  }
 
-
-    return (
-        <div className="contact-form">
-            <h2>Add New Contact</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Email:</label>
-                    <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div>
-                    <label>Phone:</label>
-                    <input
-                        type="tel"
-                        name="phone"
-                        value={formData.phone}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit">Submit</button>
-            </form>
+  return (
+    <div className="contact-form">
+      <h2>Add New Contact</h2>
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label>Name:</label>
+          <input
+            type="name"
+            name="name"
+            value={formData.name}
+            onChange={handleChange}
+            required
+          />
         </div>
-    );
+        <div>
+          <label>Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <div>
+          <label>Phone:</label>
+          <input
+            type="phone"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            required
+          />
+        </div>
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+  );
 }
 
 export default ContactForm;
-
 
 
 /*
