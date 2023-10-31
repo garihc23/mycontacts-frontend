@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import ContactList from '../components/ContactList';
 import UpdateContactForm from '../components/UpdateContactForm';
 
 const ContactListPage = (props) => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const navigate = useNavigate();
 
   useEffect(() => {
     const fetchContacts = async () => {
@@ -28,6 +30,10 @@ const ContactListPage = (props) => {
 
     fetchContacts();
   }, [props.accessToken]);
+
+  const handleAddContactClick = () => {
+    navigate('/add-contact'); // Replace with the correct path to your "Add Contact" page
+  }
 
   const handleUpdate = async (updatedData) => {
     try {
@@ -84,6 +90,8 @@ const ContactListPage = (props) => {
 
   return (
     <div>
+      <button onClick={handleAddContactClick}>Add Contact</button>
+
       <ContactList
         contacts={contacts}
         handleEditClick={handleEditClick}
