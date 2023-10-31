@@ -52,7 +52,7 @@ const RegisterForm = ({ onRegister }) => {
           required
         />
       </Form.Group>
-      <Button variant="primary" type="submit">
+      <Button variant="primary" type="submit" onClick={handleSubmit}>
         Register
       </Button>
     </Form>

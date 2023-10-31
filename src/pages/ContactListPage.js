@@ -27,7 +27,7 @@ const ContactListPage = () => {
     
         fetchContacts();
       }, []);
-    
+    console.log("CONTACTS---",contacts)
 
     return (
         <div>
@@ -41,6 +41,4 @@ export default ContactListPage;
 
 /*
     ContactListPage.js is a functional component that renders the Header component and the ContactList component.
-
-    For demonstration purposes, we've included a contacts array with sample data. You'll replace this with actual data fetched from your backend later.
 */
