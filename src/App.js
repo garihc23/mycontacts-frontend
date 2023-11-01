@@ -7,7 +7,7 @@ import LoginPage from './pages/LoginPage';
 import Header from './components/Header';
 import './assets/css/stylesheet.css'
 
-function App() {
+const App=()=> {
   const [accessToken, setAccessToken] = useState('');
 
   const handleRegister = async (formData) => {
@@ -54,8 +54,12 @@ function App() {
   }
 
   const handleLogout = () => {
+    console.log("ACES__",accessToken)
     setAccessToken('');
+    console.log("ACES__",accessToken)
+    
   }
+  
 
   return (
     <Router>

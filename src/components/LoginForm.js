@@ -1,12 +1,17 @@
 import React, { useState } from 'react';
 import { Form, Button } from 'react-bootstrap';
+import { useNavigate } from 'react-router';
 
 const LoginForm = ({ onLogin }) => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     email: '',
     password: ''
   });
 
+  const handleLoginClick = () => {
+    navigate('/'); // Replace with the correct path to your "Add Contact" page
+  }
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   }
@@ -14,6 +19,7 @@ const LoginForm = ({ onLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     onLogin(formData);
+    handleLoginClick();
   }
 
   return (
