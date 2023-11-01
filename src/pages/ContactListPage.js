@@ -8,6 +8,7 @@ import { Button, Container } from 'react-bootstrap';
 const ContactListPage = (props) => {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -21,7 +22,11 @@ const ContactListPage = (props) => {
 
         if (response.ok) {
           const data = await response.json();
-          setContacts(data);
+          // Simulate a delay of 1.5 seconds before setting the contacts
+          setTimeout(() => {
+            setContacts(data);
+            setIsLoading(false);
+          }, 850);
         } else {
           console.error('Error fetching contacts:', response.statusText);
         }
