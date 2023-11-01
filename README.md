@@ -1,70 +1,118 @@
-# Getting Started with Create React App
+# Frontend Documentation
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This document provides an overview of the frontend structure, components, and functionality of the Contacts Manager Application. It is intended to assist developers, designers, and stakeholders in understanding the frontend implementation.
 
-## Available Scripts
+## Table of Contents
 
-In the project directory, you can run:
+1. [Project Structure](#project-structure)
+2. [Components](#components)
+3. [Routing](#routing)
+4. [State Management](#state-management)
+5. [Styling](#styling)
+6. [API Integration](#api-integration)
+7. [Authentication](#authentication)
+8. [Known Issues](#known-issues)
+9. [Future Improvements](#future-improvements)
 
-### `npm start`
+---
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## 1. Project Structure <a name="project-structure"></a>
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+The frontend of the Contacts Manager Application is organized as follows:
 
-### `npm test`
+- `src/` : Contains the source code of the frontend.
+  - `assets/` : Contains static assets like images, CSS files, and fonts.
+  - `components/` : Contains reusable React components.
+  - `pages/` : Contains page components that define the structure of individual pages.
+  - `App.js` : Main entry point of the application.
+  - `index.js` : Entry point to render the application.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+---
 
-### `npm run build`
+## 2. Components <a name="components"></a>
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### Header
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- **Description**: Renders the application header with navigation links and user authentication options.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### ContactList
 
-### `npm run eject`
+- **Description**: Displays a list of contacts with options to edit or delete each contact.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### ContactForm
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Description**: Provides a form to add a new contact with fields for name, email, and phone.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+### UpdateContactForm
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+- **Description**: Displays a form to edit an existing contact's information.
 
-## Learn More
+### RegisterForm
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+- **Description**: Renders a form for user registration.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### LoginForm
 
-### Code Splitting
+- **Description**: Displays a form for user login.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+---
 
-### Analyzing the Bundle Size
+## 3. Routing <a name="routing"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+The application uses `react-router-dom` for client-side routing. Routes are defined in `App.js` using the `<Route>` component.
 
-### Making a Progressive Web App
+- `/` : Displays the list of contacts.
+- `/add-contact` : Renders the contact form for adding a new contact.
+- `/register` : Renders the registration form.
+- `/login` : Renders the login form.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+---
 
-### Advanced Configuration
+## 4. State Management <a name="state-management"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+The frontend uses React's built-in `useState` and `useEffect` hooks for managing component-level state. No global state management library (e.g., Redux) is used.
 
-### Deployment
+State is managed within components, and props are used for passing data between parent and child components.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
+## 5. Styling <a name="styling"></a>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+The application utilizes both custom CSS and the Bootstrap library for styling.
+
+- Custom CSS files are stored in `src/assets/css/` and are imported into components as needed.
+- Bootstrap classes are applied for consistent styling of elements like buttons, forms, and navigation.
+
+---
+
+## 6. API Integration <a name="api-integration"></a>
+
+The frontend communicates with the backend via HTTP requests using the `fetch` API. API endpoints are defined in the backend and accessed in the frontend using relative URLs.
+
+- The base URL for API requests is `http://localhost:5001/api`.
+
+---
+
+## 7. Authentication <a name="authentication"></a>
+
+- User authentication is implemented using a JWT (JSON Web Tokens) based system.
+- When a user registers or logs in, a JWT token is generated on the server and sent to the client for subsequent authenticated requests.
+- The token is stored in the frontend and included in the headers of API requests.
+
+---
+
+## 8. Known Issues <a name="known-issues"></a>
+
+- Concurrent updates to the same contact are not currently handled, which could lead to potential data inconsistencies.
+
+---
+
+## 9. Future Improvements <a name="future-improvements"></a>
+
+- Implement user roles and permissions to allow for different levels of access within the application.
+- Incorporate automated testing for both unit tests and integration tests.
+- Introduce logging and monitoring solutions for performance tracking and error handling.
+
+---
+
+This frontend documentation provides a comprehensive overview of the structure and functionality of the Contacts Manager Application. It serves as a reference for developers working on the frontend of the application and can be used to understand its implementation.
