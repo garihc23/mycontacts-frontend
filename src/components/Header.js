@@ -1,23 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Button } from 'react-bootstrap';
+import '../assets/css/Header.css'; // Import the external CSS file
 
 const Header = ({ accessToken, onLogout }) => {
   return (
-    <Navbar bg="dark" variant="dark">
-      <Navbar.Brand href="/">My Contacts App</Navbar.Brand>
+    <Navbar className='nav-header' >
+      <Navbar.Brand >My Contacts App</Navbar.Brand>
       <Nav className="mr-auto">
         <Nav.Link as={Link} to="/">Contact List</Nav.Link>
         <Nav.Link as={Link} to="/add-contact">Add Contact</Nav.Link>
       </Nav>
-      <Nav>
+      <Nav className='nav-login'>
         {accessToken ? (
-          <Button variant="outline-info" onClick={onLogout}>Logout</Button>
+          <Button className='nav-btn' variant="outline-info" onClick={onLogout}>Logout</Button>
         ) : (
-          <>
-            <Nav.Link as={Link} to="/register">Register</Nav.Link>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-          </>
+          <div >
+            <Button className='nav-btn' variant="outline-info"  as={Link} to="/register">Register</Button>
+            <Button className='nav-btn' variant="outline-info"  as={Link} to="/login">Login</Button>
+          </div>
         )}
       </Nav>
     </Navbar>

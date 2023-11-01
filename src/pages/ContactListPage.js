@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import ContactList from '../components/ContactList';
 import UpdateContactForm from '../components/UpdateContactForm';
+import '../assets/css/ContactListPage.css'
+import { Button, Container } from 'react-bootstrap';
 
 const ContactListPage = (props) => {
   const [contacts, setContacts] = useState([]);
@@ -89,8 +91,15 @@ const ContactListPage = (props) => {
   }
 
   return (
-    <div>
-      <button onClick={handleAddContactClick}>Add Contact</button>
+    <Container  style={{
+        width: "750px",
+        marginTop: "50px",
+        justifyContent: "center",
+      }}>
+      <div >
+        <Button className='add-contact-btn ' onClick={handleAddContactClick}>Add Contact</Button>
+
+      </div>
 
       <ContactList
         contacts={contacts}
@@ -104,7 +113,7 @@ const ContactListPage = (props) => {
           onCancel={() => setSelectedContact(null)}
         />
       )}
-    </div>
+    </Container>
   );
 }
 

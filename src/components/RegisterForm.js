@@ -19,7 +19,10 @@ const RegisterForm = ({ onRegister }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicUsername">
+      <Form.Group controlId="formBasicUsername" style={
+      {
+        marginBottom: "10px",
+      }}>
         <Form.Label>Username</Form.Label>
         <Form.Control 
           type="text" 
@@ -30,7 +33,10 @@ const RegisterForm = ({ onRegister }) => {
           required
         />
       </Form.Group>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId="formBasicEmail"style={
+      {
+        marginBottom: "10px",
+      }}>
         <Form.Label>Email</Form.Label>
         <Form.Control 
           type="email" 
@@ -41,7 +47,10 @@ const RegisterForm = ({ onRegister }) => {
           required
         />
       </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="formBasicPassword"style={
+      {
+        marginBottom: "10px",
+      }}>
         <Form.Label>Password</Form.Label>
         <Form.Control 
           type="password" 

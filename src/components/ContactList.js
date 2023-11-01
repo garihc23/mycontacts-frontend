@@ -1,19 +1,37 @@
 import React from 'react';
+import { Button, Card, Container, Row, Col } from 'react-bootstrap';
+import '../assets/css/ContactListPage.css'
 
 const ContactList = ({ contacts, handleEditClick, handleDelete }) => {
     return (
-        <div className="contact-list">
-            <h2>Contact List</h2>
+        <Container className="contact-list">
+            <h2 style={
+                {
+                    marginBottom: "30px",
+                }}
+            >Contact List</h2>
             <ul>
                 {contacts.map(contact => (
-                    <li key={contact._id}>
-                        <strong>{contact.name}</strong> - {contact.email} - {contact.phone}
-                        <button onClick={() => handleEditClick(contact)}>Edit</button>
-                        <button onClick={() => handleDelete(contact._id)}>Delete</button>
-                    </li>
+                    <Card key={contact._id} style={{marginBottom:"10px"}}>
+                        <Row style={{ padding: "10px" }}>
+                            <Col lg={9}>
+                                <Row className='contact-title'>{contact.name}</Row>
+                                <Row className='contact-details'>{contact.email}</Row>
+                                <Row className='contact-details'>{contact.phone}</Row>
+                            </Col>
+                            <Col lg={3}>
+                                <Row className='card-btn'>
+                                    <Button onClick={() => handleEditClick(contact)}>Edit</Button>
+                                </Row>
+                                <Row className='card-btn'>
+                                    <Button onClick={() => handleDelete(contact._id)}>Delete</Button>
+                                </Row>
+                            </Col>
+                        </Row>
+                    </Card>
                 ))}
             </ul>
-        </div>
+        </Container>
     );
 }
 

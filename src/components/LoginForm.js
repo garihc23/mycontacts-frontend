@@ -18,7 +18,10 @@ const LoginForm = ({ onLogin }) => {
 
   return (
     <Form onSubmit={handleSubmit}>
-      <Form.Group controlId="formBasicEmail">
+      <Form.Group controlId="formBasicEmail" style={
+      {
+        marginBottom: "10px",
+      }}>
         <Form.Label>Email</Form.Label>
         <Form.Control 
           type="email" 
@@ -29,7 +32,10 @@ const LoginForm = ({ onLogin }) => {
           required
         />
       </Form.Group>
-      <Form.Group controlId="formBasicPassword">
+      <Form.Group controlId="formBasicPassword"  style={
+      {
+        marginBottom: "10px",
+      }}>
         <Form.Label>Password</Form.Label>
         <Form.Control 
           type="password" 

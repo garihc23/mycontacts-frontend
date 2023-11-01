@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Button, Container } from 'react-bootstrap';
 
 const ContactForm = ({ addContact, accessToken }) => {
   const [formData, setFormData] = useState({
@@ -43,11 +44,22 @@ const ContactForm = ({ addContact, accessToken }) => {
   }
 
   return (
-    <div className="contact-form">
-      <h2>Add New Contact</h2>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <label>Name:</label>
+    <Container className="contact-form" style={
+      {
+        width: "350px",
+        marginTop: "50px",
+        justifyContent: "center",
+
+      }}>
+      <h2 style={
+        {
+          marginBottom: "30px",
+        }}
+      >
+        Add New Contact</h2>
+      <form onSubmit={handleSubmit} style={{ marginBottom: "10px", }}>
+        <div style={{ marginBottom: "10px", }}>
+          <label style={{ padding: "10px", }}>Name:</label>
           <input
             type="name"
             name="name"
@@ -56,8 +68,8 @@ const ContactForm = ({ addContact, accessToken }) => {
             required
           />
         </div>
-        <div>
-          <label>Email:</label>
+        <div style={{ marginBottom: "10px", }}>
+          <label style={{ padding: "10px", }}>Email:</label>
           <input
             type="email"
             name="email"
@@ -66,8 +78,8 @@ const ContactForm = ({ addContact, accessToken }) => {
             required
           />
         </div>
-        <div>
-          <label>Phone:</label>
+        <div style={{ marginBottom: "10px", }}>
+          <label style={{ padding: "10px", }}>Phone:</label>
           <input
             type="phone"
             name="phone"
@@ -76,9 +88,17 @@ const ContactForm = ({ addContact, accessToken }) => {
             required
           />
         </div>
-        <button type="submit">Submit</button>
-      </form>
-    </div>
+        <Button type="submit"
+          style={{
+            margin: "10px 40%",
+            textAlign: "center",
+            justifyContent: "center",
+            color: "#fff"
+          
+        }}
+        >Submit</Button>
+    </form>
+    </Container >
   );
 }
 

@@ -1,0 +1,57 @@
+/* Header.css */
+
+.nav-header {
+    background-color: #343a40;
+    /* Dark background color for the navbar */
+    padding: 20px !important;
+   
+}
+
+.nav-header .navbar-brand {
+    color: #ffffff;
+    /* White text color for the brand */
+    margin: 0 80px;
+}
+
+.navbar-brand:hover {
+    color: white !important;
+}
+
+.nav-header .nav-link {
+    color: #ffffff;
+    /* White text color for the navigation links */
+    margin: 0 20px;
+}
+
+.nav-header .nav-link:hover {
+    color: #17a2b8;
+    /* Light blue color on hover */
+}
+
+.nav-header .btn-outline-info {
+    color: #17a2b8;
+    /* Light blue color for the button text */
+    border-color: #17a2b8;
+    /* Light blue color for the button border */
+}
+
+.nav-header .btn-outline-info:hover {
+    color: #ffffff;
+    /* White text color on hover */
+    background-color: #17a2b8;
+    /* Light blue background on hover */
+    border-color: #17a2b8;
+    /* Light blue border color on hover */
+}
+
+.nav-login {
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    width: 50% !important;
+    margin-left: ;
+}
+.nav-btn{
+    margin: 0 10px;
+    text-align: end;
+}
